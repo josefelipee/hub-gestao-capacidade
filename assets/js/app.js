@@ -89,7 +89,7 @@
   // Carregar painéis do JSON
   async function loadPanels() {
     try {
-      const response = await fetch('data/panels.json');
+      const response = await fetch('data/panels.json?v=' + Date.now());
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       state.panels = await response.json();
       state.filteredPanels = [...state.panels];
