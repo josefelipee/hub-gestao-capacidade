@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Capacidade | Globo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            globo: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#172554',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <!-- Logo Globo -->
+        <img src="assets/logo-globo.png" alt="Logo Globo" class="w-12 h-12 rounded-full object-cover shadow-lg bg-white" />
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Gestão de Capacidade</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Globo · Power BI</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="btn-favorites" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <span>Favoritos</span>
+        </button>
+        <button id="btn-theme" class="p-2.5 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition" aria-label="Alternar tema">
+          <svg id="icon-moon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg id="icon-sun" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Controles -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-xl font-semibold text-slate-900 dark:text-white">Painéis de Gestão de Capacidade</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Selecione uma categoria ou busque pelo nome do painel.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="relative">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input id="search-input" type="text" placeholder="Buscar painel..." class="pl-10 pr-4 py-2.5 w-full sm:w-72 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-globo-500 focus:border-transparent transition shadow-sm" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Categorias -->
+    <div id="category-filters" class="flex flex-wrap gap-2 mb-8">
+      <button data-category="Todas" class="category-btn active px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Todas</button>
+      <button data-category="Gerencial" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Gerencial</button>
+      <button data-category="Categoria 1" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 1</button>
+      <button data-category="Categoria 2" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 2</button>
+      <button data-category="Categoria 3" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 3</button>
+      <button data-category="Categoria 4" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 4</button>
+    </div>
+
+    <!-- Status -->
+    <div id="status-message" class="hidden mb-6 p-4 rounded-xl bg-globo-50 dark:bg-globo-900/30 text-globo-800 dark:text-globo-200 text-sm"></div>
+
+    <!-- Grid -->
+    <div id="panels-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <!-- Cards serão renderizados pelo JS -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-slate-500 dark:text-slate-400">
+      Hub de Painéis Globo · Acesso interno · Power BI
+    </div>
+  </footer>
+
+  <!-- Modal de embed -->
+  <div id="embed-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">
+    <div class="absolute inset-0 bg-slate-900/70 backdrop-blur-sm transition-opacity" id="modal-backdrop"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
+      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-7xl h-[90vh] flex flex-col overflow-hidden transform transition-all scale-95 opacity-0" id="modal-content">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+          <div>
+            <h3 id="modal-title" class="text-lg font-semibold text-slate-900 dark:text-white">Painel</h3>
+            <p id="modal-category" class="text-xs text-slate-500 dark:text-slate-400">Categoria</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="modal-fullscreen" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Tela cheia">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+            </button>
+            <button id="modal-close" class="p-2 rounded-lg text-slate-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 transition" title="Fechar">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex-1 bg-slate-100 dark:bg-slate-900 relative">
+          <iframe id="embed-iframe" class="w-full h-full" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

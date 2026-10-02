@@ -1,0 +1,137 @@
+[
+  {
+    "id": "painel-ft",
+    "title": "[GCAP] Painel FT",
+    "category": "Gerencial",
+    "description": "Visão gerencial do painel FT.",
+    "reportId": "d2d384c5-699e-4ddb-b8de-09d87781d8e2",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-bar"
+  },
+  {
+    "id": "painel-servicos",
+    "title": "[GCAP] Painel Serviços",
+    "category": "Categoria 1",
+    "description": "Acompanhamento de serviços GCAP.",
+    "reportId": "25bddbb9-0b2e-4ad0-ad67-7163e8e68175",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "briefcase"
+  },
+  {
+    "id": "gestao-mot",
+    "title": "[HODC] Gestão de MOT",
+    "category": "Categoria 2",
+    "description": "Gestão de MOT HODC.",
+    "reportId": "fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "truck"
+  },
+  {
+    "id": "painel-04",
+    "title": "Painel 04",
+    "category": "Categoria 3",
+    "description": "Descrição do painel 04.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-pie"
+  },
+  {
+    "id": "painel-05",
+    "title": "Painel 05",
+    "category": "Categoria 4",
+    "description": "Descrição do painel 05.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-line"
+  },
+  {
+    "id": "painel-06",
+    "title": "Painel 06",
+    "category": "Gerencial",
+    "description": "Descrição do painel 06.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "users"
+  },
+  {
+    "id": "painel-07",
+    "title": "Painel 07",
+    "category": "Categoria 1",
+    "description": "Descrição do painel 07.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "folder"
+  },
+  {
+    "id": "painel-08",
+    "title": "Painel 08",
+    "category": "Categoria 2",
+    "description": "Descrição do painel 08.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-area"
+  },
+  {
+    "id": "painel-09",
+    "title": "Painel 09",
+    "category": "Categoria 3",
+    "description": "Descrição do painel 09.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-bar"
+  },
+  {
+    "id": "painel-10",
+    "title": "Painel 10",
+    "category": "Categoria 4",
+    "description": "Descrição do painel 10.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "briefcase"
+  },
+  {
+    "id": "painel-11",
+    "title": "Painel 11",
+    "category": "Gerencial",
+    "description": "Descrição do painel 11.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-pie"
+  },
+  {
+    "id": "painel-12",
+    "title": "Painel 12",
+    "category": "Categoria 1",
+    "description": "Descrição do painel 12.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-line"
+  },
+  {
+    "id": "painel-13",
+    "title": "Painel 13",
+    "category": "Categoria 2",
+    "description": "Descrição do painel 13.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "users"
+  },
+  {
+    "id": "painel-14",
+    "title": "Painel 14",
+    "category": "Categoria 3",
+    "description": "Descrição do painel 14.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "folder"
+  },
+  {
+    "id": "painel-15",
+    "title": "Painel 15",
+    "category": "Categoria 4",
+    "description": "Descrição do painel 15.",
+    "reportId": "00000000-0000-0000-0000-000000000000",
+    "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
+    "icon": "chart-area"
+  }
+]
