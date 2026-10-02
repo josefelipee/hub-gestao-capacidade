@@ -6,7 +6,8 @@
     "description": "Visão gerencial do painel FT.",
     "reportId": "d2d384c5-699e-4ddb-b8de-09d87781d8e2",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-bar"
+    "icon": "chart-bar",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d2d384c5-699e-4ddb-b8de-09d87781d8e2/9ca6250d3ee210c96d0c?experience=power-bi"
   },
   {
     "id": "painel-servicos",
@@ -15,7 +16,8 @@
     "description": "Acompanhamento de serviços GCAP.",
     "reportId": "25bddbb9-0b2e-4ad0-ad67-7163e8e68175",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "briefcase"
+    "icon": "briefcase",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/25bddbb9-0b2e-4ad0-ad67-7163e8e68175/568d1ab55401244475b2?experience=power-bi"
   },
   {
     "id": "gestao-mot",
@@ -24,7 +26,8 @@
     "description": "Gestão de MOT HODC.",
     "reportId": "fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "truck"
+    "icon": "truck",
+    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3/ReportSection?experience=power-bi"
   },
   {
     "id": "painel-04",
@@ -33,7 +36,8 @@
     "description": "Descrição do painel 04.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-pie"
+    "icon": "chart-pie",
+    "originalUrl": ""
   },
   {
     "id": "painel-05",
@@ -42,7 +46,8 @@
     "description": "Descrição do painel 05.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-line"
+    "icon": "chart-line",
+    "originalUrl": ""
   },
   {
     "id": "painel-06",
@@ -51,7 +56,8 @@
     "description": "Descrição do painel 06.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "users"
+    "icon": "users",
+    "originalUrl": ""
   },
   {
     "id": "painel-07",
@@ -60,7 +66,8 @@
     "description": "Descrição do painel 07.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "folder"
+    "icon": "folder",
+    "originalUrl": ""
   },
   {
     "id": "painel-08",
@@ -69,7 +76,8 @@
     "description": "Descrição do painel 08.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-area"
+    "icon": "chart-area",
+    "originalUrl": ""
   },
   {
     "id": "painel-09",
@@ -78,7 +86,8 @@
     "description": "Descrição do painel 09.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-bar"
+    "icon": "chart-bar",
+    "originalUrl": ""
   },
   {
     "id": "painel-10",
@@ -87,7 +96,8 @@
     "description": "Descrição do painel 10.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "briefcase"
+    "icon": "briefcase",
+    "originalUrl": ""
   },
   {
     "id": "painel-11",
@@ -96,7 +106,8 @@
     "description": "Descrição do painel 11.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-pie"
+    "icon": "chart-pie",
+    "originalUrl": ""
   },
   {
     "id": "painel-12",
@@ -105,7 +116,8 @@
     "description": "Descrição do painel 12.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-line"
+    "icon": "chart-line",
+    "originalUrl": ""
   },
   {
     "id": "painel-13",
@@ -114,7 +126,8 @@
     "description": "Descrição do painel 13.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "users"
+    "icon": "users",
+    "originalUrl": ""
   },
   {
     "id": "painel-14",
@@ -123,7 +136,8 @@
     "description": "Descrição do painel 14.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "folder"
+    "icon": "folder",
+    "originalUrl": ""
   },
   {
     "id": "painel-15",
@@ -132,6 +146,7 @@
     "description": "Descrição do painel 15.",
     "reportId": "00000000-0000-0000-0000-000000000000",
     "ctid": "a7cdc447-3b29-4b41-b73e-8a2cb54b06c6",
-    "icon": "chart-area"
+    "icon": "chart-area",
+    "originalUrl": ""
   }
 ]

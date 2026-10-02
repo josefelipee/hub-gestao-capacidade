@@ -203,3 +203,25 @@ input:focus-visible {
 .btn-primary:active {
   transform: translateY(0);
 }
+
+/* Botão link original do Power BI */
+.btn-original-link {
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-original-link:hover {
+  color: #1d4ed8;
+  border-color: #93c5fd;
+  background-color: #eff6ff;
+}
+
+.dark .btn-original-link {
+  background-color: #1e293b;
+}
+
+.dark .btn-original-link:hover {
+  color: #ffffff;
+  background-color: #1e3a8a;
+  border-color: #3b82f6;
+}
