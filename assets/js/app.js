@@ -53,6 +53,31 @@
     return icons[name] || icons['chart-bar'];
   }
 
+  // Tenant padrão da empresa (usado quando o link original não traz ctid na query string)
+  const DEFAULT_CTID = 'a7cdc447-3b29-4b41-b73e-8a2cb54b06c6';
+
+  // Extrair reportId do link original do Power BI
+  function extractReportId(url) {
+    if (!url) return null;
+    const match = url.match(/\/reports\/([a-f0-9\-]{36})/i);
+    return match ? match[1] : null;
+  }
+
+  // Extrair ctid do link original, ou retornar o padrão
+  function extractCtid(url) {
+    if (!url) return DEFAULT_CTID;
+    const match = url.match(/[?&]ctid=([a-f0-9\-]{36})/i);
+    return match ? match[1] : DEFAULT_CTID;
+  }
+
+  // Montar URL de embed a partir do link original
+  function buildEmbedUrl(panel) {
+    const reportId = extractReportId(panel.originalUrl);
+    const ctid = extractCtid(panel.originalUrl);
+    if (!reportId || !ctid) return null;
+    return `https://app.powerbi.com/reportEmbed?reportId=${reportId}&autoAuth=true&ctid=${ctid}`;
+  }
+
   // Inicialização
   async function init() {
     loadTheme();
@@ -120,13 +145,25 @@
   // Criar HTML do card
   function createCard(panel, index) {
     const isFavorite = state.favorites.has(panel.id);
-    const embedUrl = `https://app.powerbi.com/reportEmbed?reportId=${panel.reportId}&autoAuth=true&ctid=${panel.ctid}`;
+    const embedUrl = buildEmbedUrl(panel);
+    const reportId = extractReportId(panel.originalUrl);
+    const hasEmbed = !!embedUrl;
+    const hasOriginalUrl = panel.originalUrl && panel.originalUrl.trim() !== '';
     const delay = Math.min(index * 50, 500);
 
-    const hasOriginalUrl = panel.originalUrl && panel.originalUrl.trim() !== '';
     const originalLinkClass = hasOriginalUrl
       ? 'btn-original-link w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-globo-300 dark:hover:border-globo-600 transition mt-2'
       : 'w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-600 cursor-not-allowed mt-2';
+
+    const embedButton = hasEmbed
+      ? `<button class="btn-open-panel btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2" data-id="${panel.id}">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
+           Visualizar painel
+         </button>`
+      : `<button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed">
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
+           Embed indisponível
+         </button>`;
 
     return `
       <article class="panel-card flex flex-col p-6" style="animation-delay: ${delay}ms">
@@ -148,10 +185,7 @@
           <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">${escapeHtml(panel.description)}</p>
         </div>
         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-700">
-          <button class="btn-open-panel btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2" data-id="${panel.id}">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
-            Visualizar painel
-          </button>
+          ${embedButton}
           ${hasOriginalUrl
             ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="${originalLinkClass}">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
@@ -162,7 +196,7 @@
                 Link não configurado
                </button>`
           }
-          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${embedUrl}">ID: ${panel.reportId}</p>
+          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${embedUrl || ''}">ID: ${reportId || 'não identificado'}</p>
         </div>
       </article>
     `;
@@ -227,7 +261,12 @@
     const panel = state.panels.find(p => p.id === id);
     if (!panel) return;
 
-    const embedUrl = `https://app.powerbi.com/reportEmbed?reportId=${panel.reportId}&autoAuth=true&ctid=${panel.ctid}`;
+    const embedUrl = buildEmbedUrl(panel);
+    if (!embedUrl) {
+      showStatus('Não foi possível gerar o embed deste painel. Verifique o link original no JSON.', 'error');
+      return;
+    }
+
     els.modalTitle.textContent = panel.title;
     els.modalCategory.textContent = panel.category;
     els.iframe.src = embedUrl;
@@ -327,10 +366,19 @@
   // Mostrar mensagem de status
   function showStatus(message, type) {
     els.statusMessage.textContent = message;
-    els.statusMessage.classList.remove('hidden');
+    els.statusMessage.className = 'mb-6 p-4 rounded-xl text-sm transition-colors';
+
+    if (type === 'error') {
+      els.statusMessage.classList.add('bg-red-50', 'text-red-700', 'dark:bg-red-900/30', 'dark:text-red-300');
+    } else if (type === 'success') {
+      els.statusMessage.classList.add('bg-green-50', 'text-green-700', 'dark:bg-green-900/30', 'dark:text-green-300');
+    } else {
+      els.statusMessage.classList.add('bg-globo-50', 'text-globo-800', 'dark:bg-globo-900/30', 'dark:text-globo-200');
+    }
+
     setTimeout(() => {
       els.statusMessage.classList.add('hidden');
-    }, 4000);
+    }, 5000);
   }
 
   // Escape HTML
