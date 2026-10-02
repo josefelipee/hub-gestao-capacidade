@@ -24,52 +24,52 @@
     "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3/ReportSection?experience=power-bi"
   },
   {
-    "id": "painel-04",
-    "title": "Painel 04",
-    "category": "Categoria 3",
-    "description": "Descrição do painel 04.",
-    "icon": "chart-pie",
-    "originalUrl": ""
-  },
-  {
-    "id": "painel-05",
-    "title": "Painel 05",
-    "category": "Categoria 4",
-    "description": "Descrição do painel 05.",
-    "icon": "chart-line",
-    "originalUrl": ""
-  },
-  {
-    "id": "painel-06",
-    "title": "Painel 06",
-    "category": "Gerencial",
-    "description": "Descrição do painel 06.",
-    "icon": "users",
-    "originalUrl": ""
-  },
-  {
-    "id": "painel-07",
-    "title": "Painel 07",
-    "category": "Categoria 1",
-    "description": "Descrição do painel 07.",
-    "icon": "folder",
-    "originalUrl": ""
-  },
-  {
-    "id": "painel-08",
-    "title": "Painel 08",
-    "category": "Categoria 2",
-    "description": "Descrição do painel 08.",
-    "icon": "chart-area",
-    "originalUrl": ""
-  },
-  {
-    "id": "painel-09",
-    "title": "Painel 09",
-    "category": "Categoria 3",
-    "description": "Descrição do painel 09.",
+    "id": "analise-capacidade-esporte",
+    "title": "Painel Análise de Capacidade Esporte",
+    "category": "Esporte",
+    "description": "Análise de capacidade da área de Esporte.",
     "icon": "chart-bar",
-    "originalUrl": ""
+    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8f19603c-e598-4b80-9db4-505cef2d6421/ReportSectionfa4b63b54c623c04c772?experience=power-bi"
+  },
+  {
+    "id": "cap-comparativo-ciclos",
+    "title": "[CAP] Comparativo Ciclos",
+    "category": "Ciclos",
+    "description": "Comparativo de ciclos de capacidade.",
+    "icon": "chart-line",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/b4ee31c5-33b4-436a-88b3-b184bcddd9f9/27b4b748eb5950701cf1?experience=power-bi"
+  },
+  {
+    "id": "cap-planejamento-equipe-pos",
+    "title": "[CAP] Planejamento Equipe Pós",
+    "category": "Planejamento",
+    "description": "Planejamento da equipe pós-evento.",
+    "icon": "users",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d714dd90-550a-4265-9bbc-8496b92b7672/ReportSection?experience=power-bi"
+  },
+  {
+    "id": "gcap-checkins-presenciais",
+    "title": "[GCAP] Check-ins presenciais",
+    "category": "Equipe",
+    "description": "Acompanhamento de check-ins presenciais da equipe.",
+    "icon": "briefcase",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/1efb80ed-454c-471d-92df-3bfdf9c4b09f/ReportSection?experience=power-bi"
+  },
+  {
+    "id": "gcap-painel-uops",
+    "title": "[GCAP] Painel UOPs",
+    "category": "Gerencial",
+    "description": "Painel gerencial de UOPs.",
+    "icon": "chart-pie",
+    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/f6cd8a23-9e1e-4196-89f0-c9d83309f3b5/ReportSection18ed86a3d29153210327?experience=power-bi"
+  },
+  {
+    "id": "analise-capacidade-controles",
+    "title": "Painel Análise de Capacidade Controles",
+    "category": "Gerencial",
+    "description": "Análise de capacidade de controles.",
+    "icon": "chart-area",
+    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8c2c7c59-1ad2-42c9-a5ab-223520e82683/ReportSection?experience=power-bi"
   },
   {
     "id": "painel-10",
