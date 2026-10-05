@@ -80,15 +80,12 @@
     <!-- Categorias -->
     <div id="category-filters" class="flex flex-wrap gap-2 mb-8">
       <button data-category="Todas" class="category-btn active px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Todas</button>
-      <button data-category="Gerencial" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Gerencial</button>
-      <button data-category="Esporte" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Esporte</button>
-      <button data-category="Ciclos" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Ciclos</button>
-      <button data-category="Planejamento" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Planejamento</button>
-      <button data-category="Equipe" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Equipe</button>
-      <button data-category="Categoria 1" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 1</button>
-      <button data-category="Categoria 2" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 2</button>
-      <button data-category="Categoria 3" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 3</button>
-      <button data-category="Categoria 4" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Categoria 4</button>
+      <button data-category="GerencialContábil | MOT" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">GerencialContábil | MOT</button>
+      <button data-category="Ciclo Orçamentário" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Ciclo Orçamentário</button>
+      <button data-category="Planejamento de Recursos" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Planejamento de Recursos</button>
+      <button data-category="Gestão Interna" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Gestão Interna</button>
+      <button data-category="Esporte e Jornalismo" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Esporte e Jornalismo</button>
+      <button data-category="Entretenimento" class="category-btn px-4 py-2 rounded-full text-sm font-medium transition shadow-sm">Entretenimento</button>
     </div>
 
     <!-- Status -->
@@ -106,6 +103,116 @@
       Hub de Painéis Globo · Acesso interno · Power BI
     </div>
   </footer>
+
+  <!-- Botão flutuante de administração -->
+  <button id="btn-admin" class="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-slate-800 dark:bg-slate-700 text-white shadow-2xl hover:bg-slate-700 dark:hover:bg-slate-600 transition-all duration-300 flex items-center justify-center group" aria-label="Administrar painéis" title="Administrar painéis">
+    <svg class="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+  </button>
+
+  <!-- Painel lateral de administração -->
+  <div id="admin-panel" class="fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] bg-white dark:bg-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col" aria-hidden="true">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-white">Administrar Painéis</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Adicione, edite ou exporte painéis</p>
+      </div>
+      <button id="admin-close" class="p-2 rounded-lg text-slate-500 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/30 dark:hover:text-red-400 transition" title="Fechar">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Abas -->
+    <div class="flex border-b border-slate-200 dark:border-slate-700">
+      <button data-admin-tab="add" class="admin-tab active flex-1 py-3 text-sm font-medium text-center transition">Adicionar</button>
+      <button data-admin-tab="manage" class="admin-tab flex-1 py-3 text-sm font-medium text-center transition">Gerenciar</button>
+      <button data-admin-tab="export" class="admin-tab flex-1 py-3 text-sm font-medium text-center transition">Importar/Exportar</button>
+    </div>
+
+    <!-- Conteúdo das abas -->
+    <div class="flex-1 overflow-y-auto p-6">
+      <!-- Aba Adicionar -->
+      <div id="admin-tab-add" class="admin-tab-content">
+        <form id="admin-form" class="space-y-4">
+          <input type="hidden" id="admin-edit-id" value="" />
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Nome do painel</label>
+            <input type="text" id="admin-title" required placeholder="Ex: [GCAP] Painel FT" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-globo-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Categoria</label>
+            <select id="admin-category" required class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-globo-500">
+              <option value="">Selecione...</option>
+              <option value="GerencialContábil | MOT">GerencialContábil | MOT</option>
+              <option value="Ciclo Orçamentário">Ciclo Orçamentário</option>
+              <option value="Planejamento de Recursos">Planejamento de Recursos</option>
+              <option value="Gestão Interna">Gestão Interna</option>
+              <option value="Esporte e Jornalismo">Esporte e Jornalismo</option>
+              <option value="Entretenimento">Entretenimento</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Descrição</label>
+            <textarea id="admin-description" rows="3" placeholder="Descrição curta do painel" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-globo-500 resize-none"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Ícone</label>
+            <select id="admin-icon" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-globo-500">
+              <option value="chart-bar">Gráfico de barras</option>
+              <option value="chart-pie">Gráfico de pizza</option>
+              <option value="chart-line">Gráfico de linha</option>
+              <option value="chart-area">Gráfico de área</option>
+              <option value="briefcase">Maleta</option>
+              <option value="truck">Caminhão</option>
+              <option value="users">Pessoas</option>
+              <option value="folder">Pasta</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Link original do Power BI</label>
+            <input type="url" id="admin-url" required placeholder="https://app.powerbi.com/groups/..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-globo-500" />
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Cole o link que aparece no navegador ao abrir o painel.</p>
+          </div>
+          <div class="pt-2">
+            <button type="submit" id="admin-submit" class="btn-primary w-full py-3 rounded-xl text-sm font-semibold">Salvar painel</button>
+            <button type="button" id="admin-cancel-edit" class="hidden w-full mt-2 py-2.5 rounded-xl text-sm font-semibold text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition">Cancelar edição</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Aba Gerenciar -->
+      <div id="admin-tab-manage" class="admin-tab-content hidden">
+        <div id="admin-panels-list" class="space-y-3">
+          <!-- Lista renderizada pelo JS -->
+        </div>
+      </div>
+
+      <!-- Aba Importar/Exportar -->
+      <div id="admin-tab-export" class="admin-tab-content hidden">
+        <div class="space-y-6">
+          <div class="p-4 rounded-xl bg-globo-50 dark:bg-globo-900/20 border border-globo-100 dark:border-globo-800">
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Exportar painéis</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Baixe o JSON com todos os painéis cadastrados neste navegador.</p>
+            <button id="admin-export-json" class="btn-primary w-full py-2.5 rounded-xl text-sm font-semibold">Baixar JSON</button>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600">
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-2">Importar painéis</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Carregue um JSON para substituir todos os painéis atuais.</p>
+            <input type="file" id="admin-import-file" accept=".json" class="block w-full text-sm text-slate-600 dark:text-slate-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-globo-50 file:text-globo-700 hover:file:bg-globo-100 dark:file:bg-globo-900/30 dark:file:text-globo-300" />
+          </div>
+
+          <div class="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800">
+            <h3 class="font-semibold text-red-800 dark:text-red-300 mb-2">Zerar dados</h3>
+            <p class="text-sm text-red-600 dark:text-red-400 mb-3">Remove todos os painéis salvos neste navegador e recarrega os dados originais.</p>
+            <button id="admin-reset" class="w-full py-2.5 rounded-xl text-sm font-semibold text-red-700 dark:text-red-300 border border-red-200 dark:border-red-700 hover:bg-red-100 dark:hover:bg-red-900/40 transition">Restaurar dados originais</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backdrop do painel admin -->
+  <div id="admin-backdrop" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 hidden transition-opacity"></div>
 
   <!-- Modal de embed -->
   <div id="embed-modal" class="fixed inset-0 z-50 hidden" aria-hidden="true">

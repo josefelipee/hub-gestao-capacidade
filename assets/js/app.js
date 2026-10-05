@@ -32,6 +32,24 @@
     modalClose: document.getElementById('modal-close'),
     modalFullscreen: document.getElementById('modal-fullscreen'),
     iframe: document.getElementById('embed-iframe'),
+    // Admin
+    btnAdmin: document.getElementById('btn-admin'),
+    adminPanel: document.getElementById('admin-panel'),
+    adminBackdrop: document.getElementById('admin-backdrop'),
+    adminClose: document.getElementById('admin-close'),
+    adminForm: document.getElementById('admin-form'),
+    adminEditId: document.getElementById('admin-edit-id'),
+    adminTitle: document.getElementById('admin-title'),
+    adminCategory: document.getElementById('admin-category'),
+    adminDescription: document.getElementById('admin-description'),
+    adminIcon: document.getElementById('admin-icon'),
+    adminUrl: document.getElementById('admin-url'),
+    adminSubmit: document.getElementById('admin-submit'),
+    adminCancelEdit: document.getElementById('admin-cancel-edit'),
+    adminPanelsList: document.getElementById('admin-panels-list'),
+    adminExportJson: document.getElementById('admin-export-json'),
+    adminImportFile: document.getElementById('admin-import-file'),
+    adminReset: document.getElementById('admin-reset'),
   };
 
   // Ícones SVG
@@ -86,12 +104,23 @@
     await loadPanels();
   }
 
-  // Carregar painéis do JSON
+  // Carregar painéis: localStorage primeiro, depois JSON remoto
   async function loadPanels() {
     try {
+      const stored = localStorage.getItem('globo-hub-panels');
+      if (stored) {
+        state.panels = JSON.parse(stored);
+        state.filteredPanels = [...state.panels];
+        renderPanels();
+        showStatus(`${state.panels.length} painéis carregados do navegador.`, 'success');
+        return;
+      }
+
       const response = await fetch('data/panels.json?v=' + Date.now());
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      state.panels = await response.json();
+      const data = await response.json();
+      state.panels = data;
+      savePanels();
       state.filteredPanels = [...state.panels];
       renderPanels();
       showStatus(`${state.panels.length} painéis carregados com sucesso.`, 'success');
@@ -107,6 +136,15 @@
           <p class="text-xs text-slate-400 mt-2">${error.message}</p>
         </div>
       `;
+    }
+  }
+
+  // Salvar painéis no localStorage
+  function savePanels() {
+    try {
+      localStorage.setItem('globo-hub-panels', JSON.stringify(state.panels));
+    } catch (e) {
+      console.warn('Não foi possível salvar painéis:', e);
     }
   }
 
@@ -323,6 +361,186 @@
     setTheme(!isDark);
   }
 
+  // ================= ADMINISTRAÇÃO =================
+
+  function openAdminPanel() {
+    els.adminPanel.classList.add('open');
+    els.adminBackdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    renderAdminPanelsList();
+    resetAdminForm();
+  }
+
+  function closeAdminPanel() {
+    els.adminPanel.classList.remove('open');
+    els.adminBackdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function switchAdminTab(tabName) {
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.adminTab === tabName);
+    });
+    document.querySelectorAll('.admin-tab-content').forEach(content => {
+      content.classList.toggle('hidden', content.id !== `admin-tab-${tabName}`);
+    });
+    if (tabName === 'manage') renderAdminPanelsList();
+  }
+
+  function generateId(title) {
+    return title
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .substring(0, 50) || `painel-${Date.now()}`;
+  }
+
+  function resetAdminForm() {
+    els.adminForm.reset();
+    els.adminEditId.value = '';
+    els.adminSubmit.textContent = 'Salvar painel';
+    els.adminCancelEdit.classList.add('hidden');
+  }
+
+  function handleAdminSubmit(e) {
+    e.preventDefault();
+
+    const title = els.adminTitle.value.trim();
+    const category = els.adminCategory.value;
+    const description = els.adminDescription.value.trim();
+    const icon = els.adminIcon.value;
+    const originalUrl = els.adminUrl.value.trim();
+    const editId = els.adminEditId.value;
+
+    if (!title || !category || !originalUrl) {
+      showStatus('Preencha todos os campos obrigatórios.', 'error');
+      return;
+    }
+
+    if (editId) {
+      const index = state.panels.findIndex(p => p.id === editId);
+      if (index >= 0) {
+        state.panels[index] = { ...state.panels[index], title, category, description, icon, originalUrl };
+      }
+    } else {
+      const id = generateId(title);
+      state.panels.push({ id, title, category, description, icon, originalUrl });
+    }
+
+    savePanels();
+    renderPanels();
+    renderAdminPanelsList();
+    resetAdminForm();
+    showStatus(editId ? 'Painel atualizado com sucesso.' : 'Painel adicionado com sucesso.', 'success');
+  }
+
+  function editPanel(id) {
+    const panel = state.panels.find(p => p.id === id);
+    if (!panel) return;
+
+    els.adminEditId.value = panel.id;
+    els.adminTitle.value = panel.title;
+    els.adminCategory.value = panel.category;
+    els.adminDescription.value = panel.description;
+    els.adminIcon.value = panel.icon;
+    els.adminUrl.value = panel.originalUrl;
+    els.adminSubmit.textContent = 'Atualizar painel';
+    els.adminCancelEdit.classList.remove('hidden');
+    switchAdminTab('add');
+  }
+
+  function deletePanel(id) {
+    if (!confirm('Tem certeza que deseja excluir este painel?')) return;
+    state.panels = state.panels.filter(p => p.id !== id);
+    savePanels();
+    renderPanels();
+    renderAdminPanelsList();
+    showStatus('Painel excluído com sucesso.', 'success');
+  }
+
+  function renderAdminPanelsList() {
+    if (!els.adminPanelsList) return;
+
+    if (state.panels.length === 0) {
+      els.adminPanelsList.innerHTML = `
+        <div class="text-center py-8 text-slate-500 dark:text-slate-400 text-sm">
+          Nenhum painel cadastrado.
+        </div>
+      `;
+      return;
+    }
+
+    els.adminPanelsList.innerHTML = state.panels.map(panel => `
+      <div class="admin-panel-item">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex-1 min-w-0">
+            <h4 class="font-semibold text-slate-900 dark:text-white truncate">${escapeHtml(panel.title)}</h4>
+            <span class="category-badge mt-1">${escapeHtml(panel.category)}</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 truncate">${escapeHtml(panel.originalUrl)}</p>
+          </div>
+          <div class="flex items-center gap-1">
+            <button class="admin-btn-edit p-2 rounded-lg" data-id="${panel.id}" aria-label="Editar">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            </button>
+            <button class="admin-btn-delete p-2 rounded-lg" data-id="${panel.id}" aria-label="Excluir">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    document.querySelectorAll('.admin-btn-edit').forEach(btn => {
+      btn.addEventListener('click', () => editPanel(btn.dataset.id));
+    });
+    document.querySelectorAll('.admin-btn-delete').forEach(btn => {
+      btn.addEventListener('click', () => deletePanel(btn.dataset.id));
+    });
+  }
+
+  function exportPanels() {
+    const dataStr = JSON.stringify(state.panels, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `painels-hub-gestao-capacidade-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showStatus('JSON exportado com sucesso.', 'success');
+  }
+
+  function importPanels(file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (!Array.isArray(data)) throw new Error('O arquivo deve conter um array de painéis.');
+        state.panels = data;
+        savePanels();
+        renderPanels();
+        renderAdminPanelsList();
+        showStatus(`${data.length} painéis importados com sucesso.`, 'success');
+      } catch (err) {
+        showStatus('Erro ao importar JSON: ' + err.message, 'error');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function resetPanels() {
+    if (!confirm('Isso vai apagar todos os painéis salvos no navegador e recarregar os dados originais. Tem certeza?')) return;
+    localStorage.removeItem('globo-hub-panels');
+    loadPanels();
+    renderAdminPanelsList();
+    showStatus('Dados originais restaurados.', 'success');
+  }
+
   // Event listeners
   function setupEventListeners() {
     // Busca
@@ -360,7 +578,25 @@
       if (e.key === 'Escape' && !els.modal.classList.contains('hidden')) {
         closeModal();
       }
+      if (e.key === 'Escape' && els.adminPanel.classList.contains('open')) {
+        closeAdminPanel();
+      }
     });
+
+    // Admin
+    els.btnAdmin.addEventListener('click', openAdminPanel);
+    els.adminClose.addEventListener('click', closeAdminPanel);
+    els.adminBackdrop.addEventListener('click', closeAdminPanel);
+    els.adminForm.addEventListener('submit', handleAdminSubmit);
+    els.adminCancelEdit.addEventListener('click', resetAdminForm);
+
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+      tab.addEventListener('click', () => switchAdminTab(tab.dataset.adminTab));
+    });
+
+    els.adminExportJson.addEventListener('click', exportPanels);
+    els.adminImportFile.addEventListener('change', (e) => importPanels(e.target.files[0]));
+    els.adminReset.addEventListener('click', resetPanels);
   }
 
   // Mostrar mensagem de status

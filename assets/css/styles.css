@@ -225,3 +225,108 @@ input:focus-visible {
   background-color: #1e3a8a;
   border-color: #3b82f6;
 }
+
+/* Botão flutuante de admin */
+#btn-admin {
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.35);
+}
+
+#btn-admin:hover {
+  transform: translateY(-2px) rotate(0deg);
+  box-shadow: 0 15px 35px -5px rgba(15, 23, 42, 0.45);
+}
+
+/* Painel lateral de administração */
+#admin-panel.open {
+  transform: translateX(0);
+}
+
+/* Abas do admin */
+.admin-tab {
+  color: #64748b;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+}
+
+.admin-tab:hover {
+  color: #334155;
+  background-color: #f8fafc;
+}
+
+.admin-tab.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.dark .admin-tab {
+  color: #94a3b8;
+}
+
+.dark .admin-tab:hover {
+  color: #e2e8f0;
+  background-color: #1e293b;
+}
+
+.dark .admin-tab.active {
+  color: #60a5fa;
+  border-bottom-color: #3b82f6;
+  background-color: #1e3a8a;
+}
+
+/* Item da lista de gerenciamento */
+.admin-panel-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.admin-panel-item:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+.dark .admin-panel-item {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .admin-panel-item:hover {
+  border-color: #3b82f6;
+}
+
+/* Botões de ação do item */
+.admin-btn-edit {
+  color: #2563eb;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-edit:hover {
+  background-color: #eff6ff;
+}
+
+.admin-btn-delete {
+  color: #dc2626;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-delete:hover {
+  background-color: #fef2f2;
+}
+
+.dark .admin-btn-edit:hover {
+  background-color: #1e3a8a;
+}
+
+.dark .admin-btn-delete:hover {
+  background-color: #7f1d1d;
+}
+
+/* Inputs e selects do admin */
+#admin-panel input:focus,
+#admin-panel select:focus,
+#admin-panel textarea:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
