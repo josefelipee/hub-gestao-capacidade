@@ -1,137 +1,236 @@
-[
-  {
-    "id": "painel-ft",
-    "title": "[GCAP] Painel FT",
-    "category": "Gerencial",
-    "description": "Visão gerencial do painel FT.",
-    "icon": "chart-bar",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d2d384c5-699e-4ddb-b8de-09d87781d8e2/9ca6250d3ee210c96d0c?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-servicos",
-    "title": "[GCAP] Painel Serviços",
-    "category": "Categoria 1",
-    "description": "Acompanhamento de serviços GCAP.",
-    "icon": "briefcase",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/25bddbb9-0b2e-4ad0-ad67-7163e8e68175/568d1ab55401244475b2?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "gestao-mot",
-    "title": "[HODC] Gestão de MOT",
-    "category": "Categoria 2",
-    "description": "Gestão de MOT HODC.",
-    "icon": "truck",
-    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3/ReportSection?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "analise-capacidade-esporte",
-    "title": "Painel Análise de Capacidade Esporte",
-    "category": "Esporte",
-    "description": "Análise de capacidade da área de Esporte.",
-    "icon": "chart-bar",
-    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8f19603c-e598-4b80-9db4-505cef2d6421/ReportSectionfa4b63b54c623c04c772?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "cap-comparativo-ciclos",
-    "title": "[CAP] Comparativo Ciclos",
-    "category": "Ciclos",
-    "description": "Comparativo de ciclos de capacidade.",
-    "icon": "chart-line",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/b4ee31c5-33b4-436a-88b3-b184bcddd9f9/27b4b748eb5950701cf1?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "cap-planejamento-equipe-pos",
-    "title": "[CAP] Planejamento Equipe Pós",
-    "category": "Planejamento",
-    "description": "Planejamento da equipe pós-evento.",
-    "icon": "users",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d714dd90-550a-4265-9bbc-8496b92b7672/ReportSection?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "gcap-checkins-presenciais",
-    "title": "[GCAP] Check-ins presenciais",
-    "category": "Equipe",
-    "description": "Acompanhamento de check-ins presenciais da equipe.",
-    "icon": "briefcase",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/1efb80ed-454c-471d-92df-3bfdf9c4b09f/ReportSection?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "gcap-painel-uops",
-    "title": "[GCAP] Painel UOPs",
-    "category": "Gerencial",
-    "description": "Painel gerencial de UOPs.",
-    "icon": "chart-pie",
-    "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/f6cd8a23-9e1e-4196-89f0-c9d83309f3b5/ReportSection18ed86a3d29153210327?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "analise-capacidade-controles",
-    "title": "Painel Análise de Capacidade Controles",
-    "category": "Gerencial",
-    "description": "Análise de capacidade de controles.",
-    "icon": "chart-area",
-    "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8c2c7c59-1ad2-42c9-a5ab-223520e82683/ReportSection?experience=power-bi",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-10",
-    "title": "Painel 10",
-    "category": "Categoria 4",
-    "description": "Descrição do painel 10.",
-    "icon": "briefcase",
-    "originalUrl": "",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-11",
-    "title": "Painel 11",
-    "category": "Gerencial",
-    "description": "Descrição do painel 11.",
-    "icon": "chart-pie",
-    "originalUrl": "",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-12",
-    "title": "Painel 12",
-    "category": "Categoria 1",
-    "description": "Descrição do painel 12.",
-    "icon": "chart-line",
-    "originalUrl": "",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-13",
-    "title": "Painel 13",
-    "category": "Categoria 2",
-    "description": "Descrição do painel 13.",
-    "icon": "users",
-    "originalUrl": "",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-14",
-    "title": "Painel 14",
-    "category": "Categoria 3",
-    "description": "Descrição do painel 14.",
-    "icon": "folder",
-    "originalUrl": "",
-    "type": "powerbi"
-  },
-  {
-    "id": "painel-15",
-    "title": "Painel 15",
-    "category": "Categoria 4",
-    "description": "Descrição do painel 15.",
-    "icon": "chart-area",
-    "originalUrl": "",
-    "type": "powerbi"
-  }
+﻿[
+    {
+        "id":  "cap-planejamento-equipe-pos",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[CAP] Planejamento Equipe Pós",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d714dd90-550a-4265-9bbc-8496b92b7672/ReportSection?experience=power-bi"
+    },
+    {
+        "id":  "cap-realizado-design",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[CAP] Realizado DESIGN",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/a130e64b-572f-41d0-830b-8e1e6ee6bd85/4e151b19c9b36ed6143a?experience=power-bi"
+    },
+    {
+        "id":  "gcap-capacidade-x-sizing",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "[GCAP] Capacidade x Sizing",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/f0b6f46f-0a9e-41d1-92f9-621cfc4b028e/30fcc47be4ea43e43d48?experience=power-bi"
+    },
+    {
+        "id":  "gcap-chargeback-videografismo-camposicao",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[GCAP] Chargeback VideoGrafismo - Camposição",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/7e0cfd5d-d0b7-44e2-9075-dae2c2d710bb/6ab1248f84a24af906c9?experience=power-bi"
+    },
+    {
+        "id":  "gcap-planejado-x-realizado-controles-ion",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Esporte e Jornalismo",
+        "title":  "[GCAP] Planejado X Realizado Controles ION",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/a3bfa3cc-b040-4200-a1f7-3ddc217edac0/4629c71321adfbaa39c4?experience=power-bi"
+    },
+    {
+        "id":  "gcap-pos-producao-check-chargeback",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[GCAP] Pós-Produção - Check Chargeback",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/161d2522-83e6-44bd-8623-c3da6ec19b27/ReportSection?experience=power-bi"
+    },
+    {
+        "id":  "gcap-cards-consolidados-2025",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Ciclo Orçamentário",
+        "title":  "[GCAP] Cards Consolidados 2025",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/fe5af38f-ee2b-4cd3-a6e0-68c11529b074/ReportSection3c60397ef2f5186f559c?experience=power-bi"
+    },
+    {
+        "id":  "gcap-alocacao-lentes",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[GCAP] Alocação Lentes",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/fa076468-26ea-428d-bda4-94b6ff16fa88/cbd09c7b5d0d6051401d?experience=power-bi"
+    },
+    {
+        "id":  "gcap-cards-consolidados-2026",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Ciclo Orçamentário",
+        "title":  "[GCAP] Cards Consolidados 2026",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/ae800483-e693-432f-82dd-cdb80949b5ac/136d247a7c5c44591641?experience=power-bi"
+    },
+    {
+        "id":  "gcap-cards-consolidados-2027",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Ciclo Orçamentário",
+        "title":  "[GCAP] Cards Consolidados 2027",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d486509b-abbb-4793-b6e5-8ad3fb257f96/136d247a7c5c44591641?experience=power-bi"
+    },
+    {
+        "id":  "novo-tetris",
+        "description":  "",
+        "icon":  "folder",
+        "type":  "app",
+        "category":  "Planejamento de Recursos",
+        "title":  "Novo Tetris",
+        "originalUrl":  "https://tetris-capacidade.web.app/index.html"
+    },
+    {
+        "id":  "calculadora-de-variedades",
+        "description":  "",
+        "icon":  "folder",
+        "type":  "app",
+        "category":  "Entretenimento",
+        "title":  "CALCULADORA DE VARIEDADES",
+        "originalUrl":  "https://apps.powerapps.com/play/e/default-a7cdc447-3b29-4b41-b73e-8a2cb54b06c6/a/b842ea1b-32c5-4649-9072-453d6232a81d?tenantId=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026hint=2a5f326c-1952-4c09-868f-0787c8d1fd20\u0026sourcetime=1789671975993\u0026hideNavBar=true"
+    },
+    {
+        "id":  "pasta-bg",
+        "description":  "",
+        "icon":  "table",
+        "type":  "sharepoint",
+        "category":  "Contábil | MOT",
+        "title":  "Pasta BG",
+        "originalUrl":  "https://tvglobocorp.sharepoint.com/sites/Planejamento-DTEN/Planejamento/Documentos_Planejamento/Forms/AllItems.aspx?id=%2Fsites%2FPlanejamento%2DDTEN%2FPlanejamento%2FDocumentos%5FPlanejamento%2F00%2E%20Ciclo%20Or%C3%A7ament%C3%A1rio%2F04%2E%20Recursos%20e%20Pessoas%2F2026%2F01%2E%20MOT%2F02%2E%20BG"
+    },
+    {
+        "id":  "pasta-mot-realizado-ativas",
+        "description":  "",
+        "icon":  "table",
+        "type":  "sharepoint",
+        "category":  "Contábil | MOT",
+        "title":  "Pasta MOT(Realizado | Ativas)",
+        "originalUrl":  "https://tvglobocorp.sharepoint.com/sites/Planejamento-DTEN/Planejamento/Documentos_Planejamento/Forms/AllItems.aspx?id=%2Fsites%2FPlanejamento%2DDTEN%2FPlanejamento%2FDocumentos%5FPlanejamento%2F00%2E%20Ciclo%20Or%C3%A7ament%C3%A1rio%2F04%2E%20Recursos%20e%20Pessoas%2F2026%2F01%2E%20MOT%2F03%2E%20Relat%C3%B3rio%20SGTMOT\u0026viewid=a6044de0%2Dd8e3%2D4b39%2Dbd8f%2D91be90d6bbb5"
+    },
+    {
+        "id":  "pasta-orcamento-revisado",
+        "description":  "",
+        "icon":  "table",
+        "type":  "sharepoint",
+        "category":  "Contábil | MOT",
+        "title":  "Pasta Orçamento Revisado",
+        "originalUrl":  "https://tvglobocorp.sharepoint.com/sites/Planejamento-DTEN/Planejamento/Documentos_Planejamento/Forms/AllItems.aspx?id=%2Fsites%2FPlanejamento%2DDTEN%2FPlanejamento%2FDocumentos%5FPlanejamento%2F00%2E%20Ciclo%20Or%C3%A7ament%C3%A1rio%2F04%2E%20Recursos%20e%20Pessoas%2F2026%2F01%2E%20MOT%2F06%2E%20Or%C3%A7amento%20revisado\u0026viewid=a6044de0%2Dd8e3%2D4b39%2Dbd8f%2D91be90d6bbb5"
+    },
+    {
+        "id":  "gcap-acompanhamento-de-horas-alocadas",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[GCAP] Acompanhamento de Horas Alocadas",
+        "originalUrl":  "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/c15fd915-da03-43c2-a81d-d99d49280eff/2d63baf0ae89782eae07?experience=power-bi"
+    },
+    {
+        "id":  "painel-de-produtores-drama",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Entretenimento",
+        "title":  "Painel de Produtores Drama",
+        "originalUrl":  "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/4a53ca1c-862b-44b4-b4d2-8a8fb4c53cde/d60a4a309c10d3429cce?experience=power-bi"
+    },
+    {
+        "id":  "planejamento-produtores-shows-e-eventos",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Entretenimento",
+        "title":  "Planejamento Produtores Shows e Eventos",
+        "originalUrl":  "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/5a71a25d-34b7-48dc-b5fe-4c8c93b9ec44/ReportSection?experience=power-bi"
+    },
+    {
+        "id":  "cap-planejamento-ilhas-cpp",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Planejamento de Recursos",
+        "title":  "[CAP] Planejamento Ilhas CPP",
+        "originalUrl":  "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/45ca3601-53fe-48d0-8b24-1745ecf3dcde/ab9626649e5a90d8c80c?experience=power-bi"
+    },
+    {
+        "id":  "planejamento-produtores",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Entretenimento",
+        "title":  "Planejamento Produtores",
+        "originalUrl":  "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/599b7548-918f-43ce-9c0c-97390ef15dbf/ReportSection?experience=power-bi"
+    },
+    {
+        "id":  "catalogo-de-servicos-2024",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "Catálogo de Serviços 2024",
+        "originalUrl":  "https://app.powerbi.com/groups/me/reports/6e9bd8d7-ae03-48da-9ef3-c640424ee2ca/ReportSection1cb280140d18a3c44eea?experience=power-bi"
+    },
+    {
+        "id":  "catalogo-de-servicos-2025",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "Catálogo de Serviços 2025",
+        "originalUrl":  "https://app.powerbi.com/groups/me/reports/d71fc5ba-c785-480c-b7b4-270c51ec259f/ReportSection1cb280140d18a3c44eea?ctid=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026experience=power-bi\u0026bookmarkGuid=Bookmarka6b6f0db1c9bdbc6d0d8"
+    },
+    {
+        "id":  "catalogo-de-servicos-2026",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "Catálogo de Serviços 2026",
+        "originalUrl":  "https://app.powerbi.com/groups/me/reports/c8af43ee-062b-4223-9d76-3df0d4416ac8/ReportSection5d72b1844b7b68da0eee?ctid=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026experience=power-bi"
+    },
+    {
+        "id":  "painel-financeiro-25-e-t-v0",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "Painel Financeiro 25 - E\u0026T - v0",
+        "originalUrl":  "https://app.powerbi.com/groups/me/reports/56b8ee74-d605-4625-a2c8-114b1cb1f540/ReportSectione86e2d41b53da094805b?ctid=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026experience=power-bi"
+    },
+    {
+        "id":  "painel-financeiro-tecnologia-2026-v0",
+        "description":  "",
+        "icon":  "chart-bar",
+        "type":  "powerbi",
+        "category":  "Gerencial",
+        "title":  "Painel Financeiro Tecnologia - 2026 - v0",
+        "originalUrl":  "https://app.powerbi.com/groups/me/reports/dcc29ca1-02c8-4dee-97c5-f1d1465fea62/f5a80e1445d70c8b40a0?ctid=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026experience=power-bi\u0026clientSideAuth=0"
+    },
+    {
+        "id":  "app-viagens-um",
+        "description":  "",
+        "icon":  "folder",
+        "type":  "app",
+        "category":  "Esporte e Jornalismo",
+        "title":  "App Viagens UM",
+        "originalUrl":  "https://apps.powerapps.com/play/e/default-a7cdc447-3b29-4b41-b73e-8a2cb54b06c6/a/10c4f88e-b92b-41ec-9496-b4856102b113?tenantId=a7cdc447-3b29-4b41-b73e-8a2cb54b06c6\u0026hint=502b0d66-d684-44f2-ab69-d68a24c085a9\u0026sourcetime=1791225809454\u0026source=portal"
+    }
 ]
