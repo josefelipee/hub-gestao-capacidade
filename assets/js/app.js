@@ -136,11 +136,12 @@
       const stored = localStorage.getItem('globo-hub-panels');
       if (stored) {
         state.panels = JSON.parse(stored);
-        state.filteredPanels = [...state.panels];
-        renderPanels();
-        showStatus(`${state.panels.length} painéis carregados do navegador.`, 'success');
-        return;
-      }
+      state.filteredPanels = [...state.panels];
+      renderPanels();
+      updateFilterCounts();
+      showStatus(`${state.panels.length} painéis carregados do navegador.`, 'success');
+      return;
+    }
 
       const response = await fetch('data/panels.json?v=' + Date.now());
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -149,6 +150,7 @@
       savePanels();
       state.filteredPanels = [...state.panels];
       renderPanels();
+      updateFilterCounts();
       showStatus(`${state.panels.length} painéis carregados com sucesso.`, 'success');
     } catch (error) {
       console.error('Erro ao carregar painéis:', error);
@@ -203,6 +205,33 @@
 
     document.querySelectorAll('.btn-open-panel').forEach(btn => {
       btn.addEventListener('click', () => openPanel(btn.dataset.id));
+    });
+  }
+
+  // Atualizar contadores dos filtros
+  function updateFilterCounts() {
+    const typeCounts = { all: 0, powerbi: 0, sharepoint: 0, app: 0 };
+    const categoryCounts = { 'Todas': 0 };
+
+    state.panels.forEach(panel => {
+      const type = panel.type || 'powerbi';
+      typeCounts.all++;
+      if (typeCounts[type] !== undefined) typeCounts[type]++;
+
+      categoryCounts['Todas']++;
+      if (panel.category) {
+        categoryCounts[panel.category] = (categoryCounts[panel.category] || 0) + 1;
+      }
+    });
+
+    document.querySelectorAll('.type-count').forEach(span => {
+      const type = span.dataset.type;
+      span.textContent = typeCounts[type] || 0;
+    });
+
+    document.querySelectorAll('.category-count').forEach(span => {
+      const category = span.dataset.category;
+      span.textContent = categoryCounts[category] || 0;
     });
   }
 
@@ -494,6 +523,7 @@
 
     savePanels();
     renderPanels();
+    updateFilterCounts();
     renderAdminPanelsList();
     resetAdminForm();
     showStatus(editId ? 'Painel atualizado com sucesso.' : 'Painel adicionado com sucesso.', 'success');
@@ -520,6 +550,7 @@
     state.panels = state.panels.filter(p => p.id !== id);
     savePanels();
     renderPanels();
+    updateFilterCounts();
     renderAdminPanelsList();
     showStatus('Painel excluído com sucesso.', 'success');
   }
@@ -588,6 +619,7 @@
         state.panels = data;
         savePanels();
         renderPanels();
+        updateFilterCounts();
         renderAdminPanelsList();
         showStatus(`${data.length} painéis importados com sucesso.`, 'success');
       } catch (err) {
@@ -601,6 +633,7 @@
     if (!confirm('Isso vai apagar todos os painéis salvos no navegador e recarregar os dados originais. Tem certeza?')) return;
     localStorage.removeItem('globo-hub-panels');
     loadPanels();
+    updateFilterCounts();
     renderAdminPanelsList();
     showStatus('Dados originais restaurados.', 'success');
   }
