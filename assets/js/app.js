@@ -76,16 +76,23 @@
   }
 
   function getDefaultIconByType(type) {
-    return type === 'sharepoint' ? 'table' : 'chart-bar';
+    if (type === 'sharepoint') return 'table';
+    if (type === 'app') return 'folder';
+    return 'chart-bar';
   }
 
   function getTypeLabel(type) {
-    return type === 'sharepoint' ? 'Planilha SharePoint' : 'Power BI';
+    if (type === 'sharepoint') return 'Planilha SharePoint';
+    if (type === 'app') return 'Ferramenta';
+    return 'Power BI';
   }
 
   function getTypeBadgeClass(type) {
     if (type === 'sharepoint') {
       return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300';
+    }
+    if (type === 'app') {
+      return 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300';
     }
     return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300';
   }
@@ -214,12 +221,16 @@
       ? 'btn-original-link w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-globo-300 dark:hover:border-globo-600 transition mt-2'
       : 'w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-600 cursor-not-allowed mt-2';
 
+    const isExternalLink = type === 'sharepoint' || type === 'app';
+    const externalLabel = type === 'sharepoint' ? 'Abrir planilha' : 'Abrir ferramenta';
+    const externalSource = type === 'sharepoint' ? 'SharePoint' : 'aplicativo';
+
     let primaryButton;
-    if (type === 'sharepoint') {
+    if (isExternalLink) {
       primaryButton = hasOriginalUrl
         ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
-             Abrir planilha
+             ${externalLabel}
            </a>`
         : `<button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed">
              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
@@ -240,15 +251,15 @@
     const secondaryButton = hasOriginalUrl
       ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="${originalLinkClass}">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
-          Abrir no ${type === 'sharepoint' ? 'SharePoint' : 'Power BI'}
+          Abrir no ${type === 'sharepoint' ? 'SharePoint' : (type === 'app' ? 'aplicativo' : 'Power BI')}
          </a>`
       : `<button disabled class="${originalLinkClass}">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
           Link não configurado
          </button>`;
 
-    const footerInfo = type === 'sharepoint'
-      ? `<p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${escapeHtml(panel.originalUrl || '')}">Planilha SharePoint</p>`
+    const footerInfo = isExternalLink
+      ? `<p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${escapeHtml(panel.originalUrl || '')}">${type === 'sharepoint' ? 'Planilha SharePoint' : 'Ferramenta / Aplicativo'}</p>`
       : `<p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${embedUrl || ''}">ID: ${reportId || 'não identificado'}</p>`;
 
     return `
@@ -343,7 +354,7 @@
     const panel = state.panels.find(p => p.id === id);
     if (!panel) return;
 
-    if (panel.type === 'sharepoint') {
+    if (panel.type === 'sharepoint' || panel.type === 'app') {
       window.open(panel.originalUrl, '_blank', 'noopener,noreferrer');
       return;
     }
