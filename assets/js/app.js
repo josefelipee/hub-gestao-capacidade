@@ -40,6 +40,7 @@
     adminForm: document.getElementById('admin-form'),
     adminEditId: document.getElementById('admin-edit-id'),
     adminTitle: document.getElementById('admin-title'),
+    adminType: document.getElementById('admin-type'),
     adminCategory: document.getElementById('admin-category'),
     adminDescription: document.getElementById('admin-description'),
     adminIcon: document.getElementById('admin-icon'),
@@ -62,6 +63,7 @@
     'truck': '<path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />',
     'users': '<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />',
     'folder': '<path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />',
+    'table': '<path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />',
     'star': '<path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />',
     'eye': '<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />',
     'external-link': '<path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />',
@@ -69,6 +71,20 @@
 
   function getIcon(name) {
     return icons[name] || icons['chart-bar'];
+  }
+
+  function getDefaultIconByType(type) {
+    return type === 'sharepoint' ? 'table' : 'chart-bar';
+  }
+
+  function getTypeLabel(type) {
+    return type === 'sharepoint' ? 'Planilha SharePoint' : 'Power BI';
+  }
+
+  function getTypeBadgeClass(type) {
+    return type === 'sharepoint'
+      ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+      : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300';
   }
 
   // Tenant padrão da empresa (usado quando o link original não traz ctid na query string)
@@ -183,32 +199,61 @@
   // Criar HTML do card
   function createCard(panel, index) {
     const isFavorite = state.favorites.has(panel.id);
+    const type = panel.type || 'powerbi';
     const embedUrl = buildEmbedUrl(panel);
     const reportId = extractReportId(panel.originalUrl);
-    const hasEmbed = !!embedUrl;
+    const hasEmbed = type === 'powerbi' && !!embedUrl;
     const hasOriginalUrl = panel.originalUrl && panel.originalUrl.trim() !== '';
     const delay = Math.min(index * 50, 500);
+    const iconName = panel.icon || getDefaultIconByType(type);
 
     const originalLinkClass = hasOriginalUrl
       ? 'btn-original-link w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:border-globo-300 dark:hover:border-globo-600 transition mt-2'
       : 'w-full py-2 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-600 cursor-not-allowed mt-2';
 
-    const embedButton = hasEmbed
-      ? `<button class="btn-open-panel btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2" data-id="${panel.id}">
-           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
-           Visualizar painel
-         </button>`
-      : `<button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed">
-           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
-           Embed indisponível
+    let primaryButton;
+    if (type === 'sharepoint') {
+      primaryButton = hasOriginalUrl
+        ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2">
+             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
+             Abrir planilha
+           </a>`
+        : `<button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed">
+             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
+             Link indisponível
+           </button>`;
+    } else {
+      primaryButton = hasEmbed
+        ? `<button class="btn-open-panel btn-primary w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2" data-id="${panel.id}">
+             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
+             Visualizar painel
+           </button>`
+        : `<button disabled class="w-full py-2.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500 cursor-not-allowed">
+             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons.eye}</svg>
+             Embed indisponível
+           </button>`;
+    }
+
+    const secondaryButton = hasOriginalUrl
+      ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="${originalLinkClass}">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
+          Abrir no ${type === 'sharepoint' ? 'SharePoint' : 'Power BI'}
+         </a>`
+      : `<button disabled class="${originalLinkClass}">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
+          Link não configurado
          </button>`;
+
+    const footerInfo = type === 'sharepoint'
+      ? `<p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${escapeHtml(panel.originalUrl || '')}">Planilha SharePoint</p>`
+      : `<p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${embedUrl || ''}">ID: ${reportId || 'não identificado'}</p>`;
 
     return `
       <article class="panel-card flex flex-col p-6" style="animation-delay: ${delay}ms">
         <div class="flex items-start justify-between mb-4">
           <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-globo-500 to-globo-700 flex items-center justify-center text-white shadow-md">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              ${getIcon(panel.icon)}
+              ${getIcon(iconName)}
             </svg>
           </div>
           <button class="btn-favorite p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 ${isFavorite ? 'active' : ''}" data-id="${panel.id}" aria-label="Favoritar">
@@ -218,23 +263,17 @@
           </button>
         </div>
         <div class="flex-1">
-          <span class="category-badge mb-2">${escapeHtml(panel.category)}</span>
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="category-badge">${escapeHtml(panel.category)}</span>
+            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full ${getTypeBadgeClass(type)}">${getTypeLabel(type)}</span>
+          </div>
           <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2 line-clamp-2">${escapeHtml(panel.title)}</h3>
           <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">${escapeHtml(panel.description)}</p>
         </div>
         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-700">
-          ${embedButton}
-          ${hasOriginalUrl
-            ? `<a href="${escapeHtml(panel.originalUrl)}" target="_blank" rel="noopener noreferrer" class="${originalLinkClass}">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
-                Abrir no Power BI
-               </a>`
-            : `<button disabled class="${originalLinkClass}">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">${icons['external-link']}</svg>
-                Link não configurado
-               </button>`
-          }
-          <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-2 text-center truncate" title="${embedUrl || ''}">ID: ${reportId || 'não identificado'}</p>
+          ${primaryButton}
+          ${secondaryButton}
+          ${footerInfo}
         </div>
       </article>
     `;
@@ -299,9 +338,14 @@
     const panel = state.panels.find(p => p.id === id);
     if (!panel) return;
 
+    if (panel.type === 'sharepoint') {
+      window.open(panel.originalUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
     const embedUrl = buildEmbedUrl(panel);
     if (!embedUrl) {
-      showStatus('Não foi possível gerar o embed deste painel. Verifique o link original no JSON.', 'error');
+      showStatus('Não foi possível gerar o embed deste painel. Verifique o link original.', 'error');
       return;
     }
 
@@ -408,6 +452,7 @@
     e.preventDefault();
 
     const title = els.adminTitle.value.trim();
+    const type = els.adminType.value;
     const category = els.adminCategory.value;
     const description = els.adminDescription.value.trim();
     const icon = els.adminIcon.value;
@@ -419,14 +464,16 @@
       return;
     }
 
+    const panelIcon = icon || getDefaultIconByType(type);
+
     if (editId) {
       const index = state.panels.findIndex(p => p.id === editId);
       if (index >= 0) {
-        state.panels[index] = { ...state.panels[index], title, category, description, icon, originalUrl };
+        state.panels[index] = { ...state.panels[index], title, type, category, description, icon: panelIcon, originalUrl };
       }
     } else {
       const id = generateId(title);
-      state.panels.push({ id, title, category, description, icon, originalUrl });
+      state.panels.push({ id, title, type, category, description, icon: panelIcon, originalUrl });
     }
 
     savePanels();
@@ -442,9 +489,10 @@
 
     els.adminEditId.value = panel.id;
     els.adminTitle.value = panel.title;
+    els.adminType.value = panel.type || 'powerbi';
     els.adminCategory.value = panel.category;
     els.adminDescription.value = panel.description;
-    els.adminIcon.value = panel.icon;
+    els.adminIcon.value = panel.icon || getDefaultIconByType(panel.type);
     els.adminUrl.value = panel.originalUrl;
     els.adminSubmit.textContent = 'Atualizar painel';
     els.adminCancelEdit.classList.remove('hidden');
