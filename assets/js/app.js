@@ -11,6 +11,7 @@
     panels: [],
     filteredPanels: [],
     activeCategory: 'Todas',
+    activeType: 'all',
     searchQuery: '',
     favorites: new Set(),
     showFavoritesOnly: false,
@@ -21,6 +22,7 @@
     grid: document.getElementById('panels-grid'),
     searchInput: document.getElementById('search-input'),
     categoryFilters: document.getElementById('category-filters'),
+    typeFilters: document.getElementById('type-filters'),
     statusMessage: document.getElementById('status-message'),
     btnTheme: document.getElementById('btn-theme'),
     btnFavorites: document.getElementById('btn-favorites'),
@@ -282,11 +284,13 @@
   // Aplicar filtros
   function applyFilters() {
     return state.panels.filter(panel => {
+      const type = panel.type || 'powerbi';
       const matchesCategory = state.activeCategory === 'Todas' || panel.category === state.activeCategory;
+      const matchesType = state.activeType === 'all' || type === state.activeType;
       const matchesSearch = panel.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
                             panel.description.toLowerCase().includes(state.searchQuery.toLowerCase());
       const matchesFavorites = !state.showFavoritesOnly || state.favorites.has(panel.id);
-      return matchesCategory && matchesSearch && matchesFavorites;
+      return matchesCategory && matchesType && matchesSearch && matchesFavorites;
     });
   }
 
@@ -605,6 +609,17 @@
       document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       state.activeCategory = btn.dataset.category;
+      renderPanels();
+    });
+
+    // Filtros de tipo
+    els.typeFilters.addEventListener('click', (e) => {
+      const btn = e.target.closest('.type-filter');
+      if (!btn) return;
+
+      document.querySelectorAll('.type-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.activeType = btn.dataset.type;
       renderPanels();
     });
 

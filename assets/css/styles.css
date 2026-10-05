@@ -12,6 +12,57 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
+/* Filtros de tipo */
+.type-filter {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.type-filter:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.type-filter.active {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.type-filter.active[data-type="sharepoint"] {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+}
+
+.type-filter.active[data-type="powerbi"] {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.dark .type-filter {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark .type-filter:hover {
+  background-color: #27354f;
+  border-color: #475569;
+}
+
+.dark .type-filter.active {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+}
+
+.dark .type-filter.active[data-type="sharepoint"] {
+  background: linear-gradient(135deg, #16a34a 0%, #166534 100%);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
+}
+
 /* Categorias */
 .category-btn {
   background-color: #ffffff;
