@@ -84,9 +84,10 @@
   }
 
   function getTypeBadgeClass(type) {
-    return type === 'sharepoint'
-      ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
-      : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300';
+    if (type === 'sharepoint') {
+      return 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300';
+    }
+    return 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300';
   }
 
   // Tenant padrão da empresa (usado quando o link original não traz ctid na query string)

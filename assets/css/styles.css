@@ -26,10 +26,10 @@ body {
 }
 
 .type-filter.active {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
   color: #ffffff;
   border-color: transparent;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 14px rgba(234, 179, 8, 0.35);
 }
 
 .type-filter.active[data-type="sharepoint"] {
@@ -38,8 +38,8 @@ body {
 }
 
 .type-filter.active[data-type="powerbi"] {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+  box-shadow: 0 4px 14px rgba(234, 179, 8, 0.35);
 }
 
 .dark .type-filter {
@@ -54,8 +54,8 @@ body {
 }
 
 .dark .type-filter.active {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+  background: linear-gradient(135deg, #eab308 0%, #a16207 100%);
+  box-shadow: 0 4px 14px rgba(234, 179, 8, 0.45);
 }
 
 .dark .type-filter.active[data-type="sharepoint"] {
