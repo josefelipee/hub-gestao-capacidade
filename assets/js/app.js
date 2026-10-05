@@ -130,40 +130,59 @@
     await loadPanels();
   }
 
-  // Carregar painéis: localStorage primeiro, depois JSON remoto
+  // Carregar painéis: localStorage primeiro, depois JSON remoto (sempre atualiza)
   async function loadPanels() {
+    let renderedFromStorage = false;
+
     try {
       const stored = localStorage.getItem('globo-hub-panels');
       if (stored) {
         state.panels = JSON.parse(stored);
-      state.filteredPanels = [...state.panels];
-      renderPanels();
-      updateFilterCounts();
-      showStatus(`${state.panels.length} painéis carregados do navegador.`, 'success');
-      return;
+        state.filteredPanels = [...state.panels];
+        renderPanels();
+        updateFilterCounts();
+        renderedFromStorage = true;
+      }
+    } catch (e) {
+      console.warn('Erro ao ler painéis do navegador:', e);
+      localStorage.removeItem('globo-hub-panels');
     }
 
+    try {
       const response = await fetch('data/panels.json?v=' + Date.now());
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
-      state.panels = data;
-      savePanels();
-      state.filteredPanels = [...state.panels];
-      renderPanels();
-      updateFilterCounts();
-      showStatus(`${state.panels.length} painéis carregados com sucesso.`, 'success');
+
+      const changed = JSON.stringify(state.panels) !== JSON.stringify(data);
+      if (changed) {
+        state.panels = data;
+        savePanels();
+        state.filteredPanels = [...state.panels];
+        renderPanels();
+        updateFilterCounts();
+        showStatus(`${state.panels.length} painéis atualizados com sucesso.`, 'success');
+      } else if (!renderedFromStorage) {
+        state.panels = data;
+        savePanels();
+        state.filteredPanels = [...state.panels];
+        renderPanels();
+        updateFilterCounts();
+        showStatus(`${state.panels.length} painéis carregados com sucesso.`, 'success');
+      }
     } catch (error) {
       console.error('Erro ao carregar painéis:', error);
-      els.grid.innerHTML = `
-        <div class="col-span-full text-center py-16">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 mb-4">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      if (!renderedFromStorage) {
+        els.grid.innerHTML = `
+          <div class="col-span-full text-center py-16">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Não foi possível carregar os painéis</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Verifique se o arquivo <code class="bg-slate-100 dark:bg-slate-700 px-1 py-0.5 rounded">data/panels.json</code> existe e está correto.</p>
+            <p class="text-xs text-slate-400 mt-2">${error.message}</p>
           </div>
-          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Não foi possível carregar os painéis</h3>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Verifique se o arquivo <code class="bg-slate-100 dark:bg-slate-700 px-1 py-0.5 rounded">data/panels.json</code> existe e está correto.</p>
-          <p class="text-xs text-slate-400 mt-2">${error.message}</p>
-        </div>
-      `;
+        `;
+      }
     }
   }
 

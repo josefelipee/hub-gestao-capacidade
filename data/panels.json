@@ -237,34 +237,34 @@
     "id": "painel-ft",
     "title": "[GCAP] Painel FT",
     "category": "Gestão Interna",
-    "description": "Vis├úo gerencial do painel FT.",
+    "description": "Visão gerencial do painel FT.",
     "icon": "chart-bar",
     "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/d2d384c5-699e-4ddb-b8de-09d87781d8e2/9ca6250d3ee210c96d0c?experience=power-bi",
     "type": "powerbi"
   },
   {
     "id": "painel-servicos",
-    "title": "[GCAP] Painel Servi├ºos",
+    "title": "[GCAP] Painel Serviços",
     "category": "Gestão Interna",
-    "description": "Acompanhamento de servi├ºos GCAP.",
+    "description": "Acompanhamento de serviços GCAP.",
     "icon": "briefcase",
     "originalUrl": "https://app.powerbi.com/groups/9d49507a-af2f-43e4-a303-259593c15e0d/reports/25bddbb9-0b2e-4ad0-ad67-7163e8e68175/568d1ab55401244475b2?experience=power-bi",
     "type": "powerbi"
   },
   {
     "id": "gestao-mot",
-    "title": "[HODC] Gest├úo de MOT",
+    "title": "[HODC] Gestão de MOT",
     "category": "Gestão Interna",
-    "description": "Gest├úo de MOT HODC.",
+    "description": "Gestão de MOT HODC.",
     "icon": "truck",
     "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/fb0529d6-4c9c-438d-b11f-b0a71aa4d0e3/ReportSection?experience=power-bi",
     "type": "powerbi"
   },
   {
     "id": "analise-capacidade-esporte",
-    "title": "Painel An├ílise de Capacidade Esporte",
+    "title": "Painel Análise de Capacidade Esporte",
     "category": "Gestão Interna",
-    "description": "An├ílise de capacidade da ├írea de Esporte.",
+    "description": "Análise de capacidade da área de Esporte.",
     "icon": "chart-bar",
     "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8f19603c-e598-4b80-9db4-505cef2d6421/ReportSectionfa4b63b54c623c04c772?experience=power-bi",
     "type": "powerbi"
@@ -298,9 +298,9 @@
   },
   {
     "id": "analise-capacidade-controles",
-    "title": "Painel An├ílise de Capacidade Controles",
+    "title": "Painel Análise de Capacidade Controles",
     "category": "Gestão Interna",
-    "description": "An├ílise de capacidade de controles.",
+    "description": "Análise de capacidade de controles.",
     "icon": "chart-area",
     "originalUrl": "https://app.powerbi.com/groups/a0763b4f-7eb6-46c6-8b7b-9cb52d8ee234/reports/8c2c7c59-1ad2-42c9-a5ab-223520e82683/ReportSection?experience=power-bi",
     "type": "powerbi"
@@ -309,7 +309,7 @@
     "id": "painel-10",
     "title": "Painel 10",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 10.",
+    "description": "Descrição do painel 10.",
     "icon": "briefcase",
     "originalUrl": "",
     "type": "powerbi"
@@ -318,7 +318,7 @@
     "id": "painel-11",
     "title": "Painel 11",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 11.",
+    "description": "Descrição do painel 11.",
     "icon": "chart-pie",
     "originalUrl": "",
     "type": "powerbi"
@@ -327,7 +327,7 @@
     "id": "painel-12",
     "title": "Painel 12",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 12.",
+    "description": "Descrição do painel 12.",
     "icon": "chart-line",
     "originalUrl": "",
     "type": "powerbi"
@@ -336,7 +336,7 @@
     "id": "painel-13",
     "title": "Painel 13",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 13.",
+    "description": "Descrição do painel 13.",
     "icon": "users",
     "originalUrl": "",
     "type": "powerbi"
@@ -345,7 +345,7 @@
     "id": "painel-14",
     "title": "Painel 14",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 14.",
+    "description": "Descrição do painel 14.",
     "icon": "folder",
     "originalUrl": "",
     "type": "powerbi"
@@ -354,7 +354,7 @@
     "id": "painel-15",
     "title": "Painel 15",
     "category": "Gestão Interna",
-    "description": "Descri├º├úo do painel 15.",
+    "description": "Descrição do painel 15.",
     "icon": "chart-area",
     "originalUrl": "",
     "type": "powerbi"
